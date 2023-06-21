@@ -1,19 +1,16 @@
-#include <windows.h> 
+#include <windows.h>
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-
+#include "mygraphics.h"
 using namespace std;
 
-#include "myconsole.h"
-#include "mygraphics.h"
 
-
-//this function outputs a string str at position (x,y) of the screen 
+//this function outputs a string str at position (x,y) of the screen
 void OutputString(int x,int y,char *str)
-{    
+{
     COORD c;
     c.X = x;
     c.Y = y;
@@ -33,7 +30,7 @@ void ClearScreen()
     GetConsoleScreenBufferInfo(h,&info);
 	system("cls");
 	SetConsoleCursorPosition(h,info.dwCursorPosition);
-	
+
 }
 
 //alternative to ClearScreen for Windows7 platform
@@ -46,6 +43,7 @@ void ClearScreen()
 	cout.flush();
 	PlaceCursor(0,0);
 }*/
+
 //this function will place the cursor at a certain position on the screen
 void PlaceCursor(int x,int y)
 {
@@ -81,14 +79,14 @@ int CheckKeyPressed(int waitTime)
 	{
 		//FlushConsoleInputBuffer(h);..commented out as this takes to asynchronous mode on some systems
 		keypressed = ReadConsoleInput(h,&r,1,&eventss);
-		
+
 		if (keypressed && r.EventType==KEY_EVENT && r.Event.KeyEvent.bKeyDown)
 			toReturn = r.Event.KeyEvent.wVirtualKeyCode;
 		//this should make sure that checkKeyPressed is not called twice for arrow keys
 		if (toReturn == 224)
 			toReturn = CheckKeyPressed(waitTime);
 
-		
+
 		FlushConsoleInputBuffer(h);
 	}
 	return toReturn;
@@ -114,7 +112,7 @@ void GetMaxWindowSize(int &maxHorizontal,int &maxVertical)
     COORD c;
 //    c.X = x;
 //    c.Y = y;
-	
+
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
 	c = GetLargestConsoleWindowSize(h);
 
@@ -165,7 +163,7 @@ bool SetColorAtPoint(int x,int y,int color)
 
 
     HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-    
+
     WORD w = color;
     unsigned long written = 0;
 

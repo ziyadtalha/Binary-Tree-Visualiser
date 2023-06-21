@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h>
+#include <conio.h>
 #include "rectangles.h"
 #include "myconsole.h"
 #include "mygraphics.h"
@@ -86,7 +87,7 @@ void rectangles::DrawShrinkedRectangle(int x, int y, char symbol/*='-'*/) {
 }
 
 //void rectangles::draw(char symbol/*='-'*/)
-//{	
+//{
 //	drawLine(topLeft,points(bottomRight.getX(),topLeft.getY()),symbol);
 //	drawLine(topLeft,points(topLeft.getX(),bottomRight.getY()),symbol);
 //	drawLine(points(bottomRight.getX(),topLeft.getY()),bottomRight,symbol);

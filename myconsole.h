@@ -2,7 +2,6 @@
 #define MYCONSOLE_H
 #include<Windows.h>
 
-
 const int UPKEY = 38;
 const int DOWNKEY = 40;
 const int RIGHTKEY = 39;
@@ -18,7 +17,7 @@ void ClearScreen();
 
 
 
-//this function outputs a string str at position (x,y) of the screen 
+//this function outputs a string str at position (x,y) of the screen
 void OutputString(int x,int y,char *str);
 
 //this function is an alternative to ClearScreen(), when ClearScreen() does not work on windows 7
